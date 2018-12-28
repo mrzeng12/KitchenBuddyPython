@@ -30,29 +30,28 @@ def main():
     dishes_flat = [result_dishes[i,j] for i in range(num_meals) for j in range(num_dishes)]
     
     #Each dish can only be on menu once per week
-    # dish_count = {}
-    # for i in range(len(data)):
-    #   dish_count[i] =  solver.IntVar('dish_count%i' % i)
-
-    # for i in range(len(data)):
-    #   solver.Add(dish_count[i]) = 
 
     for i in range(len(data)):
       solver.Add(solver.Sum([result_dishes[j,k] == i for j in range(num_meals) for k in range(num_dishes)]) <= 1)
 
     #Each week one dish is fish
+    fish_dish_list = [i for i in range(len(data)) if data[i]["fish"]]
+    print(fish_dish_list)
 
-    
+    solver.Add(solver.Sum([result_dishes[j,k] == fish_dish_list[i] for i in range(len(fish_dish_list)) for j in range(num_meals) for k in range(num_dishes)]) == 1)
+
+    #Each week one dish is bean
+
+    bean_dish_list = [i for i in range(len(data)) if data[i]["bean"]]
+    print(bean_dish_list)
+
+    solver.Add(solver.Sum([result_dishes[j,k] == bean_dish_list[i] for i in range(len(bean_dish_list)) for j in range(num_meals) for k in range(num_dishes)]) == 1)
 
 
-
-
-
-
-  # Create the decision builder.
+    # Create the decision builder.
     decision_builder = solver.Phase(dishes_flat, solver.CHOOSE_FIRST_UNBOUND,
                     solver.ASSIGN_MIN_VALUE )
-  # Create the solution collector.
+    # Create the solution collector.
     solution = solver.Assignment()
     solution.Add(dishes_flat)
     collector = solver.FirstSolutionCollector(solution)
