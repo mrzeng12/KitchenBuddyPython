@@ -566,7 +566,7 @@
     "pork": true,
     "pureMeat": true,
     "seafood": false,
-    "soup": true,
+    "soup": false,
     "vegitable": false
   },
   {
@@ -896,7 +896,7 @@
     "pork": false,
     "pureMeat": true,
     "seafood": false,
-    "soup": true,
+    "soup": false,
     "vegitable": false
   },
   {

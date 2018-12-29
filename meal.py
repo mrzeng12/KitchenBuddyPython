@@ -15,7 +15,9 @@ def main():
     num_meals = 7
     num_dishes = 3
     num_food = len(data)
-    shuffling = False
+    shuffling = True
+    # shuffling = False
+    debug = False
 
     #shuffle json data
     if shuffling:
@@ -80,23 +82,22 @@ def main():
           ingredient[item] = []
         ingredient[item].append(i)
     
-    for index, item in ingredient.items():
-      print (index, end=":")
-      for food in item:
-        print (data[food]["name"], end=" ")
-      print()
+    if debug:
+      for index, item in ingredient.items():
+        print (index, end=":")
+        for food in item:
+          print (data[food]["name"], end=" ")
+        print()
 
     for foodList in ingredient.values():
       model.Add(sum(result_dishes[j,k,foodList[i]] for i in range(len(foodList)) for j in range(num_meals) for k in range(num_dishes)) <= 2)
 
     #Same incredient two not appear in two consecutive days 
-    #todo
-
-    
     #Same incredient only appears once in a day
+
     for foodList in ingredient.values():
-      for j in range(num_meals):
-        model.Add(sum(result_dishes[j,k,foodList[i]] for i in range(len(foodList)) for k in range(num_dishes)) <= 1)
+      for j in range(num_meals - 1):
+        model.Add(sum(result_dishes[day,k,foodList[i]] for i in range(len(foodList)) for k in range(num_dishes) for day in range(j, j+2) ) <= 1)
 
 
     # Creates the solver and solve.
