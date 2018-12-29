@@ -262,7 +262,7 @@
   {
     "name": "肉末茄子",
     "vegitable": true,
-    "pork": false,
+    "pork": true,
     "egg": false,
     "chicken": false,
     "beef": false,

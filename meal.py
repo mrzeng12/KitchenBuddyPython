@@ -1,8 +1,9 @@
 from __future__ import print_function
 from __future__ import division
+from ortools.sat.python import cp_model
 import sys
 import json
-from ortools.sat.python import cp_model
+import random
 
 class VarArraySolutionPrinterWithLimit(cp_model.CpSolverSolutionCallback):
     """Print intermediate solutions."""
@@ -21,26 +22,28 @@ class VarArraySolutionPrinterWithLimit(cp_model.CpSolverSolutionCallback):
 
     def on_solution_callback(self):
         self._solution_count += 1
-        print('Solution %i' % self._solution_count)
         print()
         for i in range(self._num_meals):
           print("Meal", i+1)
-          print_vegi_dish = -1
-          print_meat_dish = -1
-          print_soup_dish = -1
+          print_vegi_dish = []
+          print_meat_dish = []
+          print_soup_dish = []
           for j in range(self._num_dishes):
             for k in range(self._num_food):
               if self.Value(self._result_dishes[i,j,k]):
                 if k in self._pure_vegi_dish_list:
-                  print_vegi_dish = k
+                  print_vegi_dish.append(k)
                 elif k in self._soup_dish_list:
-                  print_soup_dish = k
+                  print_soup_dish.append(k)
                 else:
-                  print_meat_dish = k
-          
-          print("Vegi", self._data[print_vegi_dish]["name"])
-          print("Meat", self._data[print_meat_dish]["name"])
-          print("Soup", self._data[print_soup_dish]["name"])
+                  print_meat_dish.append(k)
+                break
+          for i in print_vegi_dish:
+            print("Vegi", self._data[i]["name"])
+          for i in print_meat_dish:
+            print("Meat", self._data[i]["name"])
+          for i in print_soup_dish:
+            print("Soup", self._data[i]["name"])
           print()
 
         if self._solution_count >= self._solution_limit:
@@ -53,11 +56,11 @@ class VarArraySolutionPrinterWithLimit(cp_model.CpSolverSolutionCallback):
 def main():
     with open('data.json', encoding='utf8') as json_data:
         data = json.load(json_data)
-
+    random.shuffle(data)
     # Creates the model.
     model = cp_model.CpModel()
 
-    num_meals = 10
+    num_meals = 7
     num_dishes = 3
     num_food = len(data)
 
