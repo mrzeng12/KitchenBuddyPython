@@ -15,13 +15,17 @@ def main():
     num_meals = 7
     num_dishes = 3
     num_food = len(data)
-    shuffling = True
+    shuffling = False
 
     #shuffle json data
     if shuffling:
       random.shuffle(data)
+    #write data to file
+    for i in range(len(data)):
+      data[i]["id"] = i
+      
     with open('shuffled_data.json', 'w', encoding='utf8') as file:
-        json.dump(data, file, ensure_ascii=False)
+        json.dump(data, file, ensure_ascii=False, indent=2, sort_keys=True)
     #result_dishes is true if meal i dish j uses food k
     result_dishes = {}
 
@@ -64,15 +68,28 @@ def main():
     for j in range(num_meals):
       model.Add(sum(result_dishes[j,k,pure_vegi_dish_list[i]] for i in range(len(pure_vegi_dish_list)) for k in range(num_dishes)) == 1)
 
-    # #Each day up to one dish is pork
-    # pork_dish_list = [i for i in range(len(data)) if data[i]["pork"]]
-    # for j in range(num_meals):
-    #   model.Add(sum(result_dishes[j,k,pork_dish_list[i]] for i in range(len(pork_dish_list)) for k in range(num_dishes)) == 1)
+    #Same incredient only appears no more than 2 times a week
+    
+    ingredient = {} #ingredient["排骨"]=[0,2,5,23]
+    for i in range(len(data)):
+      ingredient_list = data[i]["ingredient"].split("，")
+      for item in ingredient_list:
+        if item == "":
+          continue
+        if item not in ingredient:
+          ingredient[item] = []
+        ingredient[item].append(i)
+    
+    for index, item in ingredient.items():
+      print (index, end=":")
+      for food in item:
+        print (data[food]["name"], end=" ")
+      print()
 
-    # #Each day up to one dish is chicken
-    # egg_dish_list = [i for i in range(len(data)) if data[i]["beef"]]
-    # for j in range(num_meals):
-    #   model.Add(sum(result_dishes[j,k,egg_dish_list[i]] for i in range(len(egg_dish_list)) for k in range(num_dishes)) == 1)  
+    for foodList in ingredient.values():
+      model.Add(sum(result_dishes[j,k,foodList[i]] for i in range(len(foodList)) for j in range(num_meals) for k in range(num_dishes)) <= 2)
+
+    #Same incredient only appears once in a day
 
     # Creates the solver and solve.
     solver = cp_model.CpSolver()
