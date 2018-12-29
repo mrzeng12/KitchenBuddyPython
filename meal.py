@@ -89,7 +89,15 @@ def main():
     for foodList in ingredient.values():
       model.Add(sum(result_dishes[j,k,foodList[i]] for i in range(len(foodList)) for j in range(num_meals) for k in range(num_dishes)) <= 2)
 
+    #Same incredient two not appear in two consecutive days 
+    #todo
+
+    
     #Same incredient only appears once in a day
+    for foodList in ingredient.values():
+      for j in range(num_meals):
+        model.Add(sum(result_dishes[j,k,foodList[i]] for i in range(len(foodList)) for k in range(num_dishes)) <= 1)
+
 
     # Creates the solver and solve.
     solver = cp_model.CpSolver()
