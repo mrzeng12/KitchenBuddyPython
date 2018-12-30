@@ -17,7 +17,11 @@ def main():
     num_food = len(data)
     shuffling = True
     # shuffling = False
+    # debug = True
     debug = False
+
+    # add rules counter
+    rule_counter = 0
 
     #shuffle json data
     if shuffling:
@@ -40,21 +44,25 @@ def main():
     for i in range(num_meals):
       for j in range(num_dishes):
         model.Add(sum(result_dishes[i,j,k] for k in range(num_food)) == 1)
+        rule_counter += 1
 
     #Each dish can only be on menu once per week
     for i in range(num_food):
       model.Add(sum(result_dishes[j,k,i] for j in range(num_meals) for k in range(num_dishes)) <= 1)
+      rule_counter += 1
 
     #Each week one dish is fish
     fish_dish_list = [i for i in range(len(data)) if data[i]["fish"]]
 
     model.Add(sum(result_dishes[j,k,fish_dish_list[i]] for i in range(len(fish_dish_list)) for j in range(num_meals) for k in range(num_dishes)) == 1)
+    rule_counter += 1
 
     #Each week one dish is bean
 
     bean_dish_list = [i for i in range(len(data)) if data[i]["bean"]]
 
     model.Add(sum(result_dishes[j,k,bean_dish_list[i]] for i in range(len(bean_dish_list)) for j in range(num_meals) for k in range(num_dishes)) == 1)
+    rule_counter += 1
 
 
     #Each day one dish is soup
@@ -62,6 +70,7 @@ def main():
 
     for j in range(num_meals):
       model.Add(sum(result_dishes[j,k,soup_dish_list[i]] for i in range(len(soup_dish_list)) for k in range(num_dishes)) == 1)
+      rule_counter += 1
 
     #Each day one dish is pure vegi (not soup, not pork, egg, chicken, beef, fish, seafood)
     meat_dish_list = [i for i in range(len(data)) if data[i]["egg"] or data[i]["pork"] or data[i]["chicken"] or data[i]["beef"] or data[i]["fish"] or data[i]["seafood"]]
@@ -69,8 +78,9 @@ def main():
     
     for j in range(num_meals):
       model.Add(sum(result_dishes[j,k,pure_vegi_dish_list[i]] for i in range(len(pure_vegi_dish_list)) for k in range(num_dishes)) == 1)
+      rule_counter += 1
 
-    #Same incredient only appears no more than 2 times a week
+    #Same incredient appear only once in 3 consecutive days 
     
     ingredient = {} #ingredient["排骨"]=[0,2,5,23]
     for i in range(len(data)):
@@ -90,14 +100,9 @@ def main():
         print()
 
     for foodList in ingredient.values():
-      model.Add(sum(result_dishes[j,k,foodList[i]] for i in range(len(foodList)) for j in range(num_meals) for k in range(num_dishes)) <= 2)
-
-    #Same incredient two not appear in two consecutive days 
-    #Same incredient only appears once in a day
-
-    for foodList in ingredient.values():
-      for j in range(num_meals - 1):
-        model.Add(sum(result_dishes[day,k,foodList[i]] for i in range(len(foodList)) for k in range(num_dishes) for day in range(j, j+2) ) <= 1)
+      for j in range(num_meals - 2):
+        model.Add(sum(result_dishes[day,k,foodList[i]] for i in range(len(foodList)) for k in range(num_dishes) for day in range(j, j+3) ) <= 1)
+        rule_counter += 1
 
 
     # Creates the solver and solve.
@@ -105,11 +110,13 @@ def main():
     solution_printer = VarArraySolutionPrinterWithLimit(result_dishes, data, num_meals, num_dishes, pure_vegi_dish_list, soup_dish_list, 1)
     solver.SearchForAllSolutions(model, solution_printer)
     
-    print()
-    print('Statistics')
-    print('  - conflicts       : %i' % solver.NumConflicts())
-    print('  - branches        : %i' % solver.NumBranches())
-    print('  - wall time       : %f ms' % solver.WallTime())
+    if debug:
+      print()
+      print('Statistics')
+      print('  - number of rules : %i' % rule_counter)
+      print('  - conflicts       : %i' % solver.NumConflicts())
+      print('  - branches        : %i' % solver.NumBranches())
+      print('  - wall time       : %f ms' % solver.WallTime())
 
 class VarArraySolutionPrinterWithLimit(cp_model.CpSolverSolutionCallback):
     """Print intermediate solutions."""
@@ -153,7 +160,7 @@ class VarArraySolutionPrinterWithLimit(cp_model.CpSolverSolutionCallback):
           print()
 
         if self._solution_count >= self._solution_limit:
-            print('Stop search after %i solutions' % self._solution_limit)
+            # print('Stop search after %i solutions' % self._solution_limit)
             self.StopSearch()
 
     def solution_count(self):
