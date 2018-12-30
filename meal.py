@@ -96,7 +96,7 @@ def main():
       for index, item in ingredient.items():
         print (index, end=":")
         for food in item:
-          print (data[food]["name"], end=" ")
+          print (data[food]["name"].split(" -- ")[0], end=" ")
         print()
 
     for foodList in ingredient.values():
