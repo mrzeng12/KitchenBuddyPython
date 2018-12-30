@@ -1,10 +1,15 @@
 from __future__ import print_function
 from __future__ import division
 from ortools.sat.python import cp_model
+from flask import Flask
+from flask import jsonify
+from flask import request
 import sys
 import json
 import random
 
+app = Flask(__name__)
+@app.route('/weeklyMenu' , methods=['POST'])
 def main():
     with open('data.json', encoding='utf8') as json_data:
         data = json.load(json_data)
@@ -12,8 +17,9 @@ def main():
     # Creates the model.
     model = cp_model.CpModel()
 
-    num_meals = 7
-    num_dishes = 3
+    content = request.get_json()
+    num_meals = content['num_meals']
+    num_dishes = content['num_dishes']
     num_food = len(data)
     shuffling = True
     # shuffling = False
@@ -27,11 +33,12 @@ def main():
     if shuffling:
       random.shuffle(data)
     #write data to file
-    for i in range(len(data)):
-      data[i]["id"] = i
-      
-    with open('shuffled_data.json', 'w', encoding='utf8') as file:
-        json.dump(data, file, ensure_ascii=False, indent=2, sort_keys=True)
+    if debug:
+      for i in range(len(data)):
+        data[i]["id"] = i
+        
+      with open('shuffled_data.json', 'w', encoding='utf8') as file:
+          json.dump(data, file, ensure_ascii=False, indent=2, sort_keys=True)
     #result_dishes is true if meal i dish j uses food k
     result_dishes = {}
 
@@ -107,9 +114,41 @@ def main():
 
     # Creates the solver and solve.
     solver = cp_model.CpSolver()
-    solution_printer = VarArraySolutionPrinterWithLimit(result_dishes, data, num_meals, num_dishes, pure_vegi_dish_list, soup_dish_list, 1)
-    solver.SearchForAllSolutions(model, solution_printer)
-    
+    # solution_printer = VarArraySolutionPrinterWithLimit(result_dishes, data, num_meals, num_dishes, pure_vegi_dish_list, soup_dish_list, 1)
+    # solver.SearchForAllSolutions(model, solution_printer)
+    status = solver.Solve(model)
+    output = []
+    if status == cp_model.FEASIBLE:
+      for i in range(num_meals):
+          if debug: print("Meal", i+1)
+          print_vegi_dish = []
+          print_meat_dish = []
+          print_soup_dish = []
+          for j in range(num_dishes):
+            for k in range(num_food):
+              if solver.Value(result_dishes[i,j,k]):
+                if k in pure_vegi_dish_list:
+                  print_vegi_dish.append(k)
+                elif k in soup_dish_list:
+                  print_soup_dish.append(k)
+                else:
+                  print_meat_dish.append(k)
+                break
+          dishes = []
+          for m in print_vegi_dish:
+            if debug: print("Vegi", data[m]["name"])
+            dishes.append({"type": "Vegi", "name": data[m]["name"]})
+          for m in print_meat_dish:
+            if debug: print("Meat", data[m]["name"])
+            dishes.append({"type": "Meat", "name": data[m]["name"]})
+          for m in print_soup_dish:
+            if debug: print("Soup", data[m]["name"])
+            dishes.append({"type": "Soup", "name": data[m]["name"]})
+          if debug: print()
+          output.append(dishes)
+          
+
+          
     if debug:
       print()
       print('Statistics')
@@ -117,54 +156,7 @@ def main():
       print('  - conflicts       : %i' % solver.NumConflicts())
       print('  - branches        : %i' % solver.NumBranches())
       print('  - wall time       : %f ms' % solver.WallTime())
-
-class VarArraySolutionPrinterWithLimit(cp_model.CpSolverSolutionCallback):
-    """Print intermediate solutions."""
-
-    def __init__(self, result_dishes, data, num_meals, num_dishes, pure_vegi_dish_list, soup_dish_list, limit):
-        cp_model.CpSolverSolutionCallback.__init__(self)
-        self._result_dishes = result_dishes
-        self._data = data
-        self._num_meals = num_meals
-        self._num_dishes = num_dishes
-        self._num_food = len(data)
-        self._pure_vegi_dish_list = pure_vegi_dish_list
-        self._soup_dish_list = soup_dish_list
-        self._solution_count = 0
-        self._solution_limit = limit
-
-    def on_solution_callback(self):
-        self._solution_count += 1
-        print()
-        for i in range(self._num_meals):
-          print("Meal", i+1)
-          print_vegi_dish = []
-          print_meat_dish = []
-          print_soup_dish = []
-          for j in range(self._num_dishes):
-            for k in range(self._num_food):
-              if self.Value(self._result_dishes[i,j,k]):
-                if k in self._pure_vegi_dish_list:
-                  print_vegi_dish.append(k)
-                elif k in self._soup_dish_list:
-                  print_soup_dish.append(k)
-                else:
-                  print_meat_dish.append(k)
-                break
-          for i in print_vegi_dish:
-            print("Vegi", self._data[i]["name"])
-          for i in print_meat_dish:
-            print("Meat", self._data[i]["name"])
-          for i in print_soup_dish:
-            print("Soup", self._data[i]["name"])
-          print()
-
-        if self._solution_count >= self._solution_limit:
-            # print('Stop search after %i solutions' % self._solution_limit)
-            self.StopSearch()
-
-    def solution_count(self):
-        return self.__solution_count
+    return jsonify(output)
 
 if __name__ == "__main__":
-    main()
+  app.run(host='0.0.0.0')
