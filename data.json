@@ -127,12 +127,12 @@
     "fish": false,
     "id": 7,
     "ingredient": [
-      "猪肉块",
+      "猪肉",
       "粉丝"
     ],
     "name": "猪肉炖粉条 -- Braised Pork with Vermicell",
     "shoppingList": [
-      "猪肉块",
+      "猪肉",
       "粉丝"
     ],
     "soup": false,
@@ -816,11 +816,11 @@
     "fish": false,
     "id": 46,
     "ingredient": [
-      "猪肉块"
+      "猪肉"
     ],
     "name": "红烧肉 -- Red Braised Pork Belly",
     "shoppingList": [
-      "猪肉块"
+      "猪肉"
     ],
     "soup": false,
     "uuid": "0da642eb-8776-4c2c-8177-de087f03e995",

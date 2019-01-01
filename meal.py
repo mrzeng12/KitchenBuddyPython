@@ -24,8 +24,8 @@ def main():
     num_food = len(data)
     shuffling = True
     # shuffling = False
-    # debug = True
-    debug = False
+    debug = True
+    # debug = False
 
     # add rules counter
     rule_counter = 0
@@ -88,7 +88,7 @@ def main():
       model.Add(sum(result_dishes[j,k,pure_vegi_dish_list[i]] for i in range(len(pure_vegi_dish_list)) for k in range(num_dishes)) == 1)
       rule_counter += 1
 
-    #Same incredient appear only once in 3 consecutive days 
+    #Same incredient appear only once in 2 consecutive days 
     
     ingredient = {} #ingredient["排骨"]=[0,2,5,23]
     for i in range(len(data)):
@@ -107,8 +107,8 @@ def main():
         print()
 
     for foodList in ingredient.values():
-      for j in range(num_meals - 2):
-        model.Add(sum(result_dishes[day,k,foodList[i]] for i in range(len(foodList)) for k in range(num_dishes) for day in range(j, j+3) ) <= 1)
+      for j in range(num_meals - 1):
+        model.Add(sum(result_dishes[day,k,foodList[i]] for i in range(len(foodList)) for k in range(num_dishes) for day in range(j, j+2) ) <= 1)
         rule_counter += 1
 
 
