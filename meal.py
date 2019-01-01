@@ -7,6 +7,7 @@ from flask import request
 import sys
 import json
 import random
+import uuid
 
 app = Flask(__name__)
 @app.route('/weeklyMenu' , methods=['POST'])
@@ -36,6 +37,9 @@ def main():
     if debug:
       for i in range(len(data)):
         data[i]["id"] = i
+        # data[i]["shoppingList"] = data[i]["ingredient"]
+        # data[i]["description"] = "https://www.youtube.com/channel/UCg0m_Ah8P_MQbnn77-vYnYw"
+        # data[i]["uuid"] = str(uuid.uuid4())
         
       with open('shuffled_data.json', 'w', encoding='utf8') as file:
           json.dump(data, file, ensure_ascii=False, indent=2, sort_keys=True)
