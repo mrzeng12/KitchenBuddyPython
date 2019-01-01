@@ -37,8 +37,6 @@ def main():
     if debug:
       for i in range(len(data)):
         data[i]["id"] = i
-        # data[i]["shoppingList"] = data[i]["ingredient"]
-        # data[i]["description"] = "https://www.youtube.com/channel/UCg0m_Ah8P_MQbnn77-vYnYw"
         # data[i]["uuid"] = str(uuid.uuid4())
         
       with open('shuffled_data.json', 'w', encoding='utf8') as file:
@@ -84,8 +82,7 @@ def main():
       rule_counter += 1
 
     #Each day one dish is pure vegi (not soup, not pork, egg, chicken, beef, fish, seafood)
-    meat_dish_list = [i for i in range(len(data)) if data[i]["egg"] or data[i]["pork"] or data[i]["chicken"] or data[i]["beef"] or data[i]["fish"] or data[i]["seafood"]]
-    pure_vegi_dish_list = [i for i in range(len(data)) if data[i]["vegitable"] and i not in meat_dish_list and i not in soup_dish_list]
+    pure_vegi_dish_list = [i for i in range(len(data)) if data[i]["vegitable"] and i not in soup_dish_list]
     
     for j in range(num_meals):
       model.Add(sum(result_dishes[j,k,pure_vegi_dish_list[i]] for i in range(len(pure_vegi_dish_list)) for k in range(num_dishes)) == 1)
