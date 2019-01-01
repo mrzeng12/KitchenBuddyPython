@@ -1,38 +1,32 @@
 from __future__ import print_function
 from __future__ import division
 from ortools.sat.python import cp_model
-from flask import Flask
-from flask import jsonify
-from flask import request
 import sys
 import json
 import random
 import uuid
 
-app = Flask(__name__)
-@app.route('/weeklyMenu' , methods=['POST'])
-def main():
+def getMealList(request):
     with open('data.json', encoding='utf8') as json_data:
         data = json.load(json_data)
 
     # Creates the model.
     model = cp_model.CpModel()
 
-    content = request.get_json()
-    num_meals = content['num_meals']
-    num_dishes = content['num_dishes']
-    num_fish_per_week = content['num_fish_per_week']
-    num_bean_per_week = content['num_bean_per_week']
-    num_vegi = content['num_vegi']
-    num_soup = content['num_soup']
-    num_food_interval = content['num_food_interval']
-    num_seafood_interval = content['num_seafood_interval']
+    num_meals = request['num_meals']
+    num_dishes = request['num_dishes']
+    num_fish_per_week = request['num_fish_per_week']
+    num_bean_per_week = request['num_bean_per_week']
+    num_vegi = request['num_vegi']
+    num_soup = request['num_soup']
+    num_food_interval = request['num_food_interval']
+    num_seafood_interval = request['num_seafood_interval']
 
     num_food = len(data)
     shuffling = True
     # shuffling = False
-    debug = True
-    # debug = False
+    # debug = True
+    debug = False
 
     # add rules counter
     rule_counter = 0
@@ -167,7 +161,6 @@ def main():
       print('  - conflicts       : %i' % solver.NumConflicts())
       print('  - branches        : %i' % solver.NumBranches())
       print('  - wall time       : %f ms' % solver.WallTime())
-    return jsonify(output)
+    return output
 
-if __name__ == "__main__":
-  app.run(host='0.0.0.0', debug=True)
+
