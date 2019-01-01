@@ -21,6 +21,13 @@ def main():
     content = request.get_json()
     num_meals = content['num_meals']
     num_dishes = content['num_dishes']
+    num_fish_per_week = content['num_fish_per_week']
+    num_bean_per_week = content['num_bean_per_week']
+    num_vegi = content['num_vegi']
+    num_soup = content['num_soup']
+    num_food_interval = content['num_food_interval']
+    num_seafood_interval = content['num_seafood_interval']
+
     num_food = len(data)
     shuffling = True
     # shuffling = False
@@ -60,35 +67,35 @@ def main():
       model.Add(sum(result_dishes[j,k,i] for j in range(num_meals) for k in range(num_dishes)) <= 1)
       rule_counter += 1
 
-    #Each week one dish is fish
+    #Each week "num_fish_per_week" dish is fish
     fish_dish_list = [i for i in range(len(data)) if data[i]["fish"]]
 
-    model.Add(sum(result_dishes[j,k,fish_dish_list[i]] for i in range(len(fish_dish_list)) for j in range(num_meals) for k in range(num_dishes)) == 1)
+    model.Add(sum(result_dishes[j,k,fish_dish_list[i]] for i in range(len(fish_dish_list)) for j in range(num_meals) for k in range(num_dishes)) == num_fish_per_week)
     rule_counter += 1
 
-    #Each week one dish is bean
+    #Each week "num_bean_per_week" dish is bean
 
     bean_dish_list = [i for i in range(len(data)) if data[i]["bean"]]
 
-    model.Add(sum(result_dishes[j,k,bean_dish_list[i]] for i in range(len(bean_dish_list)) for j in range(num_meals) for k in range(num_dishes)) == 1)
+    model.Add(sum(result_dishes[j,k,bean_dish_list[i]] for i in range(len(bean_dish_list)) for j in range(num_meals) for k in range(num_dishes)) == num_bean_per_week)
     rule_counter += 1
 
 
-    #Each day one dish is soup
+    #Each day "num_soup" dish is soup
     soup_dish_list = [i for i in range(len(data)) if data[i]["soup"]]
 
     for j in range(num_meals):
-      model.Add(sum(result_dishes[j,k,soup_dish_list[i]] for i in range(len(soup_dish_list)) for k in range(num_dishes)) == 1)
+      model.Add(sum(result_dishes[j,k,soup_dish_list[i]] for i in range(len(soup_dish_list)) for k in range(num_dishes)) == num_soup)
       rule_counter += 1
 
-    #Each day one dish is pure vegi (not soup, not pork, egg, chicken, beef, fish, seafood)
+    #Each day "num_vegi" dish is pure vegi (not soup, not pork, egg, chicken, beef, fish, seafood)
     pure_vegi_dish_list = [i for i in range(len(data)) if data[i]["vegitable"] and i not in soup_dish_list]
     
     for j in range(num_meals):
-      model.Add(sum(result_dishes[j,k,pure_vegi_dish_list[i]] for i in range(len(pure_vegi_dish_list)) for k in range(num_dishes)) == 1)
+      model.Add(sum(result_dishes[j,k,pure_vegi_dish_list[i]] for i in range(len(pure_vegi_dish_list)) for k in range(num_dishes)) == num_vegi)
       rule_counter += 1
 
-    #Same incredient appear only once in 2 consecutive days 
+    #Same incredient appear only once in "num_food_interval" days 
     
     ingredient = {} #ingredient["排骨"]=[0,2,5,23]
     for i in range(len(data)):
@@ -107,10 +114,16 @@ def main():
         print()
 
     for foodList in ingredient.values():
-      for j in range(num_meals - 1):
-        model.Add(sum(result_dishes[day,k,foodList[i]] for i in range(len(foodList)) for k in range(num_dishes) for day in range(j, j+2) ) <= 1)
+      for j in range(num_meals - (num_food_interval - 1)):
+        model.Add(sum(result_dishes[day,k,foodList[i]] for i in range(len(foodList)) for k in range(num_dishes) for day in range(j, j+num_food_interval) ) <= 1)
         rule_counter += 1
 
+    #Seafood (include fish) appear only once in "num_seafood_interval" days
+    seafood_dish_list = [i for i in range(len(data)) if data[i]["seafood"]]
+
+    for j in range(num_meals - (num_seafood_interval - 1)):
+      model.Add(sum(result_dishes[day,k,seafood_dish_list[i]] for i in range(len(seafood_dish_list)) for k in range(num_dishes) for day in range(j, j+num_seafood_interval) ) <= 1)
+      rule_counter += 1
 
     # Creates the solver and solve.
     solver = cp_model.CpSolver()
@@ -157,4 +170,4 @@ def main():
     return jsonify(output)
 
 if __name__ == "__main__":
-  app.run(host='0.0.0.0')
+  app.run(host='0.0.0.0', debug=True)

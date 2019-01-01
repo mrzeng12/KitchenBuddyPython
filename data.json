@@ -9,6 +9,7 @@
       "鸡蛋"
     ],
     "name": "蒜苗炒鸡蛋 -- Garlic Sprout with Scrambled Eggs",
+    "seafood": false,
     "shoppingList": [
       "蒜苗",
       "鸡蛋"
@@ -26,6 +27,7 @@
       "鸡肉"
     ],
     "name": "咖喱鸡 -- Curry Chicken",
+    "seafood": false,
     "shoppingList": [
       "鸡肉"
     ],
@@ -43,6 +45,7 @@
       "香肠"
     ],
     "name": "荷兰豆香肠 -- Sausage with Snowpeas",
+    "seafood": false,
     "shoppingList": [
       "荷兰豆",
       "香肠"
@@ -60,6 +63,7 @@
       "芦笋"
     ],
     "name": "清炒芦笋 -- Fried Asparagus with Garlic",
+    "seafood": false,
     "shoppingList": [
       "芦笋"
     ],
@@ -78,6 +82,7 @@
       "猪肉"
     ],
     "name": "木须肉 -- Moo Shu Pork",
+    "seafood": false,
     "shoppingList": [
       "鸡蛋",
       "肉片",
@@ -97,6 +102,7 @@
       "猪肉"
     ],
     "name": "冬瓜丸子 -- Winter Melon and Meatball Soup",
+    "seafood": false,
     "shoppingList": [
       "丸子",
       "猪肉"
@@ -114,6 +120,7 @@
       "上海菜"
     ],
     "name": "清炒上海菜 -- Stir-Fried Choy Sum",
+    "seafood": false,
     "shoppingList": [
       "上海菜"
     ],
@@ -131,6 +138,7 @@
       "粉丝"
     ],
     "name": "猪肉炖粉条 -- Braised Pork with Vermicell",
+    "seafood": false,
     "shoppingList": [
       "猪肉",
       "粉丝"
@@ -148,6 +156,7 @@
       "包菜"
     ],
     "name": "手撕包菜 -- Stir-Fried Cabbage",
+    "seafood": false,
     "shoppingList": [
       "包菜"
     ],
@@ -166,6 +175,7 @@
       "猪肉"
     ],
     "name": "青椒香干肉丝 -- Shredded Pork with Dried Bean Curd",
+    "seafood": false,
     "shoppingList": [
       "青椒",
       "肉丝",
@@ -185,6 +195,7 @@
       "鸡蛋"
     ],
     "name": "番茄炒鸡蛋 -- Scrambled Eggs and Tomatoes",
+    "seafood": false,
     "shoppingList": [
       "番茄",
       "鸡蛋"
@@ -203,6 +214,7 @@
       "鸡蛋"
     ],
     "name": "番茄鸡蛋汤 -- Tomato and Egg Soup",
+    "seafood": false,
     "shoppingList": [
       "番茄",
       "鸡蛋"
@@ -222,6 +234,7 @@
       "海鲜"
     ],
     "name": "蒜蓉粉丝蒸扇贝 -- Steamed Scallops with Minced Garlic and Glass Noodles",
+    "seafood": true,
     "shoppingList": [
       "粉丝",
       "扇贝"
@@ -241,6 +254,7 @@
       "猪肉"
     ],
     "name": "冬瓜排骨 -- Winter Melon with Pork Ribs Soup",
+    "seafood": false,
     "shoppingList": [
       "冬瓜",
       "排骨",
@@ -260,6 +274,7 @@
       "土豆"
     ],
     "name": "青椒土豆 -- Green Pepper with Potato Shreds",
+    "seafood": false,
     "shoppingList": [
       "青椒",
       "土豆"
@@ -278,6 +293,7 @@
       "鸡蛋"
     ],
     "name": "韭菜炒鸡蛋 -- Scrambled Egg with Leek",
+    "seafood": false,
     "shoppingList": [
       "韭菜",
       "鸡蛋"
@@ -295,6 +311,7 @@
       "茄子"
     ],
     "name": "肉末茄子 -- Fried Eggplant with Minced Pork",
+    "seafood": false,
     "shoppingList": [
       "茄子"
     ],
@@ -312,6 +329,7 @@
       "猪肉"
     ],
     "name": "糖醋排骨 -- Sweet and Sour Spare Ribs",
+    "seafood": false,
     "shoppingList": [
       "排骨",
       "猪肉"
@@ -330,6 +348,7 @@
       "白菜"
     ],
     "name": "番茄炒白菜 -- Fried Chinese Cabbage with Tomato",
+    "seafood": false,
     "shoppingList": [
       "番茄",
       "白菜"
@@ -349,6 +368,7 @@
       "猪肉"
     ],
     "name": "萝卜排骨汤 -- Radish and Ribs Soup",
+    "seafood": false,
     "shoppingList": [
       "萝卜",
       "排骨",
@@ -369,6 +389,7 @@
       "海鲜"
     ],
     "name": "冬瓜虾仁 -- Fried Shrimp with Winter Melon",
+    "seafood": true,
     "shoppingList": [
       "冬瓜",
       "虾"
@@ -387,6 +408,7 @@
       "海鲜"
     ],
     "name": "油焖大虾 -- Braised Shrimps",
+    "seafood": true,
     "shoppingList": [
       "虾"
     ],
@@ -404,6 +426,7 @@
       "白菜"
     ],
     "name": "上汤白菜 -- Braised Chinese Cabbage in Broth",
+    "seafood": false,
     "shoppingList": [
       "鸡蛋",
       "白菜"
@@ -421,6 +444,7 @@
       "鸡肉"
     ],
     "name": "宫保鸡丁 --  Kung Pao Chicken",
+    "seafood": false,
     "shoppingList": [
       "鸡肉"
     ],
@@ -438,6 +462,7 @@
       "牛尾"
     ],
     "name": "番茄牛尾汤 -- Oxtail Soup with Tomato",
+    "seafood": false,
     "shoppingList": [
       "番茄",
       "牛尾"
@@ -456,6 +481,7 @@
       "海鲜"
     ],
     "name": "三文鱼 -- Salmon",
+    "seafood": true,
     "shoppingList": [
       "鱼"
     ],
@@ -473,6 +499,7 @@
       "鸡蛋"
     ],
     "name": "菠菜鸡蛋汤 -- Spinach and Egg Soup",
+    "seafood": false,
     "shoppingList": [
       "菠菜",
       "鸡蛋"
@@ -490,6 +517,7 @@
       "油麦菜"
     ],
     "name": "蒜蓉油麦菜 -- Sauteed Leaf Lettuce with Mashed Garlic",
+    "seafood": false,
     "shoppingList": [
       "油麦菜"
     ],
@@ -507,6 +535,7 @@
       "猪肉"
     ],
     "name": "蘑菇肉片 -- Fried Pork with Mushroom",
+    "seafood": false,
     "shoppingList": [
       "肉片",
       "猪肉"
@@ -526,6 +555,7 @@
       "猪肉"
     ],
     "name": "荷兰豆肉片 -- Fried Pork with Snow Pea",
+    "seafood": false,
     "shoppingList": [
       "荷兰豆",
       "肉片",
@@ -544,6 +574,7 @@
       "鸡蛋"
     ],
     "name": "紫菜鸡蛋汤 -- Seaweed and Egg Soup",
+    "seafood": false,
     "shoppingList": [
       "鸡蛋"
     ],
@@ -561,6 +592,7 @@
       "海鲜"
     ],
     "name": "烤鱼 -- Roast Grass Carp ",
+    "seafood": true,
     "shoppingList": [
       "鱼"
     ],
@@ -577,6 +609,7 @@
       "生菜"
     ],
     "name": "蚝油生菜 -- Lettuce with Oyster Sauce",
+    "seafood": false,
     "shoppingList": [
       "生菜"
     ],
@@ -594,6 +627,7 @@
       "鸡蛋"
     ],
     "name": "青椒炒鸡蛋 -- Green Pepper and Scrambled Eggs",
+    "seafood": false,
     "shoppingList": [
       "青椒",
       "鸡蛋"
@@ -613,6 +647,7 @@
       "猪肉"
     ],
     "name": "蒜苗回锅肉 -- Double Cooked Pork Slices",
+    "seafood": false,
     "shoppingList": [
       "蒜苗",
       "肉片",
@@ -632,6 +667,7 @@
       "海鲜"
     ],
     "name": "茄汁大虾 -- Fried Shrimp in Tomato Sauce",
+    "seafood": true,
     "shoppingList": [
       "虾"
     ],
@@ -649,6 +685,7 @@
       "鸡蛋"
     ],
     "name": "苦瓜煎蛋 --  Bitter Melon with Egg",
+    "seafood": false,
     "shoppingList": [
       "苦瓜",
       "鸡蛋"
@@ -668,6 +705,7 @@
       "木耳"
     ],
     "name": "黄瓜山药木耳 -- Fried Chinese Yam with Black Fungus",
+    "seafood": false,
     "shoppingList": [
       "黄瓜",
       "山药",
@@ -686,6 +724,7 @@
       "鸡肉"
     ],
     "name": "红烧鸡腿 -- Braised Chicken Drumstick",
+    "seafood": false,
     "shoppingList": [
       "鸡肉"
     ],
@@ -702,6 +741,7 @@
       "白菜"
     ],
     "name": "醋溜大白菜 -- Cabbage with Sweet and Sour Sauce",
+    "seafood": false,
     "shoppingList": [
       "白菜"
     ],
@@ -718,6 +758,7 @@
       "菠菜"
     ],
     "name": "清炒菠菜 -- Garlic Sauteed Spinach",
+    "seafood": false,
     "shoppingList": [
       "菠菜"
     ],
@@ -735,6 +776,7 @@
       "猪肉"
     ],
     "name": "鱼香肉丝 -- Fish Flavored Shredded Pork",
+    "seafood": false,
     "shoppingList": [
       "肉丝",
       "猪肉"
@@ -752,6 +794,7 @@
       "油菜"
     ],
     "name": "香菇油菜 -- Sautéed Cabbage with Mushrooms",
+    "seafood": false,
     "shoppingList": [
       "油菜"
     ],
@@ -769,6 +812,7 @@
       "豆腐"
     ],
     "name": "菠菜豆腐汤 -- Spinach and Tofu Soup",
+    "seafood": false,
     "shoppingList": [
       "菠菜",
       "豆腐"
@@ -786,6 +830,7 @@
       "荷兰豆"
     ],
     "name": "清炒荷兰豆 -- Fried Snow Peas",
+    "seafood": false,
     "shoppingList": [
       "荷兰豆"
     ],
@@ -803,6 +848,7 @@
       "海鲜"
     ],
     "name": "腰果虾仁 -- Fried Shrimps with Cashew Nuts",
+    "seafood": true,
     "shoppingList": [
       "虾"
     ],
@@ -819,6 +865,7 @@
       "猪肉"
     ],
     "name": "红烧肉 -- Red Braised Pork Belly",
+    "seafood": false,
     "shoppingList": [
       "猪肉"
     ],
@@ -836,6 +883,7 @@
       "猪肉"
     ],
     "name": "香煎猪排 -- Pan-fried pork chops",
+    "seafood": false,
     "shoppingList": [
       "猪排",
       "猪肉"
@@ -855,6 +903,7 @@
       "猪肉"
     ],
     "name": "菜花肉片 -- Cauliflower with Meat",
+    "seafood": false,
     "shoppingList": [
       "菜花",
       "肉片",
@@ -873,6 +922,7 @@
       "莴笋"
     ],
     "name": "炒莴笋 -- Fried Celtuce",
+    "seafood": false,
     "shoppingList": [
       "莴笋"
     ],
@@ -889,6 +939,7 @@
       "粉丝"
     ],
     "name": "蚂蚁上树 -- Ants climbing a tree",
+    "seafood": false,
     "shoppingList": [
       "粉丝"
     ],
@@ -906,6 +957,7 @@
       "海鲜"
     ],
     "name": "龙利鱼 -- Basa Fish",
+    "seafood": true,
     "shoppingList": [
       "鱼"
     ],
@@ -924,6 +976,7 @@
       "猪肉"
     ],
     "name": "山药排骨汤 -- Yam with Spare Ribs Soup",
+    "seafood": false,
     "shoppingList": [
       "山药",
       "排骨",
@@ -943,6 +996,7 @@
       "蘑菇"
     ],
     "name": "小鸡炖蘑菇 -- Stewed Chickend with Mushroom",
+    "seafood": false,
     "shoppingList": [
       "鸡肉",
       "蘑菇"
@@ -962,6 +1016,7 @@
       "猪肉"
     ],
     "name": "玉米排骨汤 -- Pork Soup with Corn",
+    "seafood": false,
     "shoppingList": [
       "玉米",
       "排骨",
@@ -982,6 +1037,7 @@
       "青椒"
     ],
     "name": "地三鲜 -- Sauteed Potato, Green Pepper and Eggplant ",
+    "seafood": false,
     "shoppingList": [
       "茄子",
       "土豆",
@@ -1001,6 +1057,7 @@
       "海鲜"
     ],
     "name": "罗非鱼 -- Tilapia",
+    "seafood": true,
     "shoppingList": [
       "鱼"
     ],
@@ -1019,6 +1076,7 @@
       "海鲜"
     ],
     "name": "黄瓜虾仁 -- Fried Shrimps with Cucumber",
+    "seafood": true,
     "shoppingList": [
       "黄瓜",
       "虾"
@@ -1037,6 +1095,7 @@
       "海鲜"
     ],
     "name": "比目鱼 -- Flounder",
+    "seafood": true,
     "shoppingList": [
       "鱼"
     ],
@@ -1054,6 +1113,7 @@
       "海鲜"
     ],
     "name": "鳕鱼 -- Cod",
+    "seafood": true,
     "shoppingList": [
       "鱼"
     ],
@@ -1071,6 +1131,7 @@
       "猪肉"
     ],
     "name": "水煮肉片 -- Sichuan Boiled Spicy Pork",
+    "seafood": false,
     "shoppingList": [
       "肉片",
       "猪肉"
@@ -1089,6 +1150,7 @@
       "猪肉"
     ],
     "name": "豆豉排骨 -- Steamed Pork Ribs with Black Bean Sauce",
+    "seafood": false,
     "shoppingList": [
       "排骨",
       "猪肉"
@@ -1108,6 +1170,7 @@
       "海鲜"
     ],
     "name": "蒜蓉粉丝蒸虾 -- Steamed Shrimp with Minced Garlic and Glass Noodles",
+    "seafood": true,
     "shoppingList": [
       "粉丝",
       "虾"
@@ -1126,6 +1189,7 @@
       "粉丝"
     ],
     "name": "白菜烧粉条 -- Braised Pork with Vermicelli",
+    "seafood": false,
     "shoppingList": [
       "白菜",
       "粉丝"
@@ -1145,6 +1209,7 @@
       "海鲜"
     ],
     "name": "玉米虾仁 -- Fried Shimps with Corn",
+    "seafood": true,
     "shoppingList": [
       "玉米",
       "虾"
