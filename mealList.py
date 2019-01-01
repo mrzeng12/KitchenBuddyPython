@@ -142,13 +142,13 @@ def getMealList(request):
           dishes = []
           for m in print_vegi_dish:
             if debug: print("Vegi", data[m]["name"])
-            dishes.append({"type": "Vegi", "name": data[m]["name"]})
+            dishes.append({"type": "Vegi", "name": data[m]["name"], "uuid": data[m]["uuid"], "shoppingList": data[m]["shoppingList"]})
           for m in print_meat_dish:
             if debug: print("Meat", data[m]["name"])
-            dishes.append({"type": "Meat", "name": data[m]["name"]})
+            dishes.append({"type": "Meat", "name": data[m]["name"], "uuid": data[m]["uuid"], "shoppingList": data[m]["shoppingList"]})
           for m in print_soup_dish:
             if debug: print("Soup", data[m]["name"])
-            dishes.append({"type": "Soup", "name": data[m]["name"]})
+            dishes.append({"type": "Soup", "name": data[m]["name"], "uuid": data[m]["uuid"], "shoppingList": data[m]["shoppingList"]})
           if debug: print()
           output.append(dishes)
           
