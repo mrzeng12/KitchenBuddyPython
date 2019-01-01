@@ -30,6 +30,6 @@ def updateFoodWrapper():
 
 @app.route('/food/remove' , methods=['POST'])
 def removeFoodWrapper():
-    return removeFood(removeFood(request.get_json()))
+    return jsonify(removeFood(request.get_json()))
 if __name__ == "__main__":
   app.run(host='0.0.0.0', debug=True)
