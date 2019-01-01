@@ -92,8 +92,7 @@ def main():
     
     ingredient = {} #ingredient["排骨"]=[0,2,5,23]
     for i in range(len(data)):
-      ingredient_list = data[i]["ingredient"].split("，")
-      for item in ingredient_list:
+      for item in data[i]["ingredient"]:
         if item == "":
           continue
         if item not in ingredient:
@@ -115,8 +114,6 @@ def main():
 
     # Creates the solver and solve.
     solver = cp_model.CpSolver()
-    # solution_printer = VarArraySolutionPrinterWithLimit(result_dishes, data, num_meals, num_dishes, pure_vegi_dish_list, soup_dish_list, 1)
-    # solver.SearchForAllSolutions(model, solution_printer)
     status = solver.Solve(model)
     output = []
     if status == cp_model.FEASIBLE:
