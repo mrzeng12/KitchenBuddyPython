@@ -10,8 +10,7 @@ def addFood(request):
         data[i]["id"] = i
     with open('data.json', 'w', encoding='utf8') as file:
         json.dump(data, file, ensure_ascii=False, indent=2, sort_keys=True)
-    return {"result":"add food success"}
-
+    return {"result":"add food success", "uuid":request["uuid"]}
 def updateFood(request):
     with open('data.json', encoding='utf8') as json_data:
         data = json.load(json_data)
