@@ -29,7 +29,8 @@
     "name": "咖喱鸡 -- Curry Chicken",
     "seafood": false,
     "shoppingList": [
-      "鸡肉"
+      "鸡肉",
+      "咖喱"
     ],
     "soup": false,
     "uuid": "ed647de4-c0cb-4976-8cea-653d847f1fa0",
@@ -454,7 +455,7 @@
   },
   {
     "bean": false,
-    "description": "https://www.youtube.com/channel/UCg0m_Ah8P_MQbnn77-vYnYw",
+    "description": "https://youtu.be/fV_yS9n00DM\n清水浸泡一小时去血\n牛尾裹盐，花椒，淀粉，两面煎炒\n西红柿，番茄酱，牛尾，花椒，盐，下锅\n高压锅压阀一小时",
     "fish": false,
     "id": 24,
     "ingredient": [
@@ -527,7 +528,7 @@
   },
   {
     "bean": false,
-    "description": "https://www.youtube.com/channel/UCg0m_Ah8P_MQbnn77-vYnYw",
+    "description": "https://youtu.be/ceSei3IFOZk\n肉片用盐，糖，生抽，淀粉腌\n蘑菇开水烫\n葱姜下锅炒肉",
     "fish": false,
     "id": 28,
     "ingredient": [
@@ -602,7 +603,7 @@
   },
   {
     "bean": false,
-    "description": "https://www.youtube.com/channel/UCg0m_Ah8P_MQbnn77-vYnYw",
+    "description": "耗油，香油，油，糖\n煮熟，拌酱",
     "fish": false,
     "id": 32,
     "ingredient": [
@@ -1041,7 +1042,8 @@
     "shoppingList": [
       "茄子",
       "土豆",
-      "青椒"
+      "青椒",
+      "大蒜"
     ],
     "soup": false,
     "uuid": "13b59f1b-9119-4e21-81f1-90fceedc1c7e",
@@ -1185,25 +1187,6 @@
     "fish": false,
     "id": 63,
     "ingredient": [
-      "白菜",
-      "粉丝"
-    ],
-    "name": "白菜烧粉条 -- Braised Pork with Vermicelli",
-    "seafood": false,
-    "shoppingList": [
-      "白菜",
-      "粉丝"
-    ],
-    "soup": false,
-    "uuid": "8d27e9ea-43ae-488b-801e-9e0332ea9831",
-    "vegitable": true
-  },
-  {
-    "bean": false,
-    "description": "https://www.youtube.com/channel/UCg0m_Ah8P_MQbnn77-vYnYw",
-    "fish": false,
-    "id": 64,
-    "ingredient": [
       "玉米",
       "虾",
       "海鲜"
@@ -1216,6 +1199,24 @@
     ],
     "soup": false,
     "uuid": "dc000dd9-5d8e-4dba-8c75-d990db9d1762",
+    "vegitable": false
+  },
+  {
+    "bean": true,
+    "description": "",
+    "fish": false,
+    "id": 64,
+    "ingredient": [
+      "猪肉"
+    ],
+    "name": "黄豆猪蹄汤",
+    "seafood": false,
+    "shoppingList": [
+      "黄豆",
+      "猪蹄"
+    ],
+    "soup": true,
+    "uuid": "dd3b6159-5e92-4935-a16c-ce9148cd7a0d",
     "vegitable": false
   }
 ]
